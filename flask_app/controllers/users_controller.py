@@ -4,4 +4,7 @@ from flask import render_template
 
 @app.route('/')
 def home():
-    return render_template('index.html')
+    all_users = User.get_all()
+    return render_template('html/index.html', all_users=all_users)
+
+# provide new routes
