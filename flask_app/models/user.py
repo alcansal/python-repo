@@ -19,4 +19,9 @@ class User:
             all_users.append(cls(user))
         return all_users
     
-    # Create a delete method
+    @classmethod
+    def delete(cls, data):
+        query = "DELETE FROM users WHERE id = %(id)s;"
+        return connectToMySQL(cls.db).query_db(query, data)
+    
+    # create user method
