@@ -20,8 +20,19 @@ class User:
         return all_users
     
     @classmethod
+    def show_one(cls, data):
+        query = "SELECT * FROM users WHERE id = %(id)s;"
+        results = connectToMySQL(cls.db).query_db(query, data)
+        return cls(results[0])
+    
+    @classmethod
     def delete(cls, data):
         query = "DELETE FROM users WHERE id = %(id)s;"
         return connectToMySQL(cls.db).query_db(query, data)
     
-    # create user method
+    @classmethod
+    def create(cls, data):
+        query = """
+                INSERT INTO users (first_name, last_name, email)
+                VALUES (%(first_name)s, %(last_name)s, %(email)s); """
+        return connectToMySQL(cls.db).query_db(query, data)
