@@ -36,3 +36,7 @@ class User:
                 INSERT INTO users (first_name, last_name, email)
                 VALUES (%(first_name)s, %(last_name)s, %(email)s); """
         return connectToMySQL(cls.db).query_db(query, data)
+    
+    @classmethod
+    def update(cls, data):
+        pass

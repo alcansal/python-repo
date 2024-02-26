@@ -42,3 +42,8 @@ def create_form():
     }
     User.create(data)
     return redirect('/')
+
+# update page
+app.route('/user/edit/user_id')
+def update_route(user_id):
+    pass
