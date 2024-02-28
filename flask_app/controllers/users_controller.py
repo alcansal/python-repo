@@ -44,6 +44,12 @@ def create_form():
     return redirect('/')
 
 # update page
-app.route('/user/edit/user_id')
+@app.route('/user/edit/<int:user_id>')
 def update_route(user_id):
-    pass
+    data = {
+        "id": user_id
+    }
+    user = User.show_one(data)
+    return render_template('html/update.html', user=user)
+
+# update form below
